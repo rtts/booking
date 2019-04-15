@@ -1,0 +1,5 @@
+Django
+django-extensions
+django-ckeditor
+psycopg2 --no-binary psycopg2
+git+https://github.com/rtts/django-simplesass.git

@@ -1,0 +1,14 @@
+{% extends 'booking/base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{{object.title}}</h1>
+
+  {{object.introduction|safe}}
+
+  <form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button>{% trans 'Submit' %}</button>
+  </form>
+{% endblock %}

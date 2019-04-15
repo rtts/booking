@@ -1,0 +1,6 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+  <h1>{{object.title}}</h1>
+  {{object.confirmation|safe}}
+{% endblock %}
