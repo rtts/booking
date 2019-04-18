@@ -15,9 +15,10 @@ class SubjectAdmin(admin.ModelAdmin):
 
 @admin.register(Timeslot)
 class TimeslotAdmin(admin.ModelAdmin):
-    list_display = ['shoot', 'time', 'subject', 'get_url']
+    list_display = ['shoot', 'time', 'dummy', 'subject', 'get_url']
     list_display_links = ['time']
     list_filter = ['shoot', 'time']
+    list_editable = ['dummy']
 
     def get_url(self, slot):
         if slot.subject:
