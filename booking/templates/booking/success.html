@@ -3,4 +3,6 @@
 {% block content %}
   <h1>{{object.title}}</h1>
   {{object.confirmation|safe}}
+
+  <a class="button" href="{{subject.get_url}}">{{subject.get_url}}</a>
 {% endblock %}

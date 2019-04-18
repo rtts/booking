@@ -4,11 +4,44 @@
 {% block content %}
   <h1>{{object.title}}</h1>
 
-  {{object.introduction|safe}}
-
   <form method="post">
     {% csrf_token %}
-    {{form}}
-    <button>{% trans 'Submit' %}</button>
+    <p>
+      {% trans 'Your name' %}:
+      {{form.name}}
+    </p>
+
+    {% trans 'Your appointment' %}:
+    <div class="tables">
+      {% regroup object.timeslots.all by time.date as slots_per_day %}
+      {% for day in slots_per_day %}
+        <table>
+          <tr>
+            <th>{{day.grouper}}</th>
+          </tr>
+          {% for timeslot in day.list %}
+            <tr>
+              <td class="{% if form.instance.timeslot.id == timeslot.id %}booked{% elif timeslot.subject %}unavailable{% endif %}">
+                <label for="id_timeslot_{{timeslot.id}}"><input type="radio" name="timeslot" value="{{timeslot.id}}" required id="id_timeslot_{{timeslot.id}}" {% if form.instance.timeslot.id == timeslot.id %}checked{% elif timeslot.subject %}disabled{% endif %}>{{timeslot.time.time}}</label>
+              </td>
+            </tr>
+          {% endfor %}
+        </table>
+      {% endfor %}
+    </div>
+
+    <p>
+      <button>{% trans 'Save' %}</button>
+    </p>
+
+    {% if form.instance %}
+      <p>
+        {% trans 'Thanks for your reservation! This will be your personal portrait URL:' %}
+      </p>
+      <p>
+        <a class="button" href="{{form.instance.get_url}}">{{form.instance.get_url}}</a>
+      </p>
+    {% endif %}
+
   </form>
 {% endblock %}
