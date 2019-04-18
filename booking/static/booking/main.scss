@@ -11,13 +11,19 @@ html, body {
 
 main {
   padding: 1em;
-  max-width: 800px;
-  margin: auto;
+}
+
+div.intro {
+  max-width: 600px;
 }
 
 label {
   display: block;
   cursor: pointer;
+}
+
+.error {
+  border: 1px solid red;
 }
 
 button {

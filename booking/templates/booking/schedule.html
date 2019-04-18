@@ -1,0 +1,10 @@
+{% extends 'booking/base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>{% trans 'Save' %}</button>
+  </form>
+{% endblock %}

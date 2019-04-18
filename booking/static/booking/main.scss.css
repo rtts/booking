@@ -5,13 +5,17 @@ html, body {
   line-height: 1.5; }
 
 main {
-  padding: 1em;
-  max-width: 800px;
-  margin: auto; }
+  padding: 1em; }
+
+div.intro {
+  max-width: 600px; }
 
 label {
   display: block;
   cursor: pointer; }
+
+.error {
+  border: 1px solid red; }
 
 button {
   font-size: 1.5em;

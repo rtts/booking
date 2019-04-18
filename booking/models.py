@@ -17,8 +17,6 @@ def random_string():
 class Photoshoot(models.Model):
     slug = models.SlugField(_('slug'), unique=True)
     title = models.CharField(_('title'), max_length=32)
-    introduction = RichTextField(_('introduction'), blank=True)
-    confirmation = RichTextField(_('confirmation'), blank=True)
 
     def __str__(self):
         return self.title
@@ -47,6 +45,7 @@ class Timeslot(models.Model):
     shoot = models.ForeignKey(Photoshoot, verbose_name=_('shoot'), related_name=_('timeslots'), on_delete=models.PROTECT)
     subject = models.OneToOneField(Subject, blank=True, null=True, verbose_name=_('subject'), related_name='timeslot', on_delete=models.PROTECT)
     time = models.DateTimeField(_('time'))
+    dummy = models.BooleanField(_('dummy'), default=False)
 
     def __str__(self):
         return str(self.time)
