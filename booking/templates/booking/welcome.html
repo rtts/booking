@@ -5,10 +5,9 @@
   <h1>{{object.title}}</h1>
 
   <div class="intro">
+    {{object.description|safe}}
+
     {% if not form.instance.timeslot %}
-      <p>
-        Hi there, super model!
-      </p>
       <p>
         Please enter your name and choose a time from the available slots below.
       </p>

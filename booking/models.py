@@ -17,6 +17,7 @@ def random_string():
 class Photoshoot(models.Model):
     slug = models.SlugField(_('slug'), unique=True)
     title = models.CharField(_('title'), max_length=32)
+    description = RichTextField(_('description'), blank=True)
 
     def __str__(self):
         return self.title
