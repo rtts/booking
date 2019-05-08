@@ -81,8 +81,6 @@
           </table>
         {% endfor %}
       </div>
-
-      <button>Confirm reservation</button>
     </form>
 
   {% endif %}
@@ -93,8 +91,8 @@
     document.addEventListener("DOMContentLoaded", function(event) {
         var form = document.getElementById('form');
         var labels = document.querySelectorAll('label');
-        for (var label of labels) {
-            label.addEventListener('click', function() {
+        for (var i = 0; i < labels.length; i++) {
+            labels[i].addEventListener('click', function() {
                 form.submit();
             });
         }
