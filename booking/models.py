@@ -6,7 +6,8 @@ from ckeditor.fields import RichTextField
 
 def random_string():
     length = 6
-    chars = '234679ABCDEFGHJKLMNPRSTUVWXYZabcdefghijkmnpqrstuvwxyz'
+    # I can only write these characters recognizably by hand:
+    chars = '34679ACDEFGHJKLMNPRTWYbcdefhkmnpt'
     unique = False
     while not unique:
         slug = ''.join(random.choice(chars) for x in range(length))
