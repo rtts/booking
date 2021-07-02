@@ -19,6 +19,7 @@ STATIC_ROOT = '/srv/booking/static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/srv/booking/media'
 LOGIN_REDIRECT_URL = '/'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 CKEDITOR_CONFIGS = {
     'default': {
