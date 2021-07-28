@@ -34,6 +34,9 @@ class ScheduleForm(forms.Form):
     def save(self, shoot):
         date = self.cleaned_data['date']
         for hour in [10,11,12,13,14,15,16]:
-            for minute in [0,10,20,30,40,50]:
-                dt = timezone.make_aware(datetime(date.year, date.month, date.day, hour=hour, minute=minute))
-                Timeslot(time=dt, shoot=shoot, dummy=(minute==50)).save()
+            # for minute in [0,10,20,30,40,50]:
+            #     dt = timezone.make_aware(datetime(date.year, date.month, date.day, hour=hour, minute=minute))
+            #     Timeslot(time=dt, shoot=shoot, dummy=(minute==50)).save()
+            minute = 0
+            dt = timezone.make_aware(datetime(date.year, date.month, date.day, hour=hour, minute=minute))
+            Timeslot(time=dt, shoot=shoot, dummy=(hour==13)).save()
