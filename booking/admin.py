@@ -8,6 +8,7 @@ class SubjectAdmin(admin.ModelAdmin):
     list_display = ['timeslot', 'name', 'get_url']
     list_display_links = ['name']
     list_filter = ['timeslot__time']
+    search_fields = ['name']
 
     def get_url(self, subject):
         return mark_safe('<a href="{url}" target="_blank">{url}</a>'.format(url=subject.get_url()))
