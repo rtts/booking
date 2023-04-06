@@ -1,5 +1,6 @@
 import random
 import string
+from datetime import datetime
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from ckeditor.fields import RichTextField
@@ -31,9 +32,14 @@ class Photoshoot(models.Model):
 class Subject(models.Model):
     name = models.CharField(_('name'), max_length=32)
     slug = models.CharField(_('slug'), max_length=16, default=random_string, unique=True)
+    time = models.DateTimeField(_('time'), auto_now_add=True, null=True)
 
     def get_url(self):
-        return 'http://www.superformosa.nl/portrait/' + self.slug
+        if not self.time:
+            if hasattr(self, "timeslot") and self.timeslot.time >= datetime(2023, 1, 1, tzinfo=self.timeslot.time.tzinfo):
+                return f'https://www.superformosa.nl/{self.timeslot.time.year}/p/{self.slug}/'
+            return f'https://www.superformosa.nl/portrait/{self.slug}/'
+        return f'https://www.superformosa.nl/{self.time.year}/p/{self.slug}/'
 
     def __str__(self):
         return self.name
@@ -50,7 +56,7 @@ class Timeslot(models.Model):
     dummy = models.BooleanField(_('dummy'), default=False)
 
     def __str__(self):
-        return str(self.time)
+        return str(self.time.strftime("%y-%m-%d %H:%M"))
 
     class Meta:
         ordering = ['shoot', 'time']
