@@ -1,5 +1,5 @@
-Booking system
-==============
+Booking system for photographers
+================================
 
 This repository contains the source code of
 [booking.superformosa.com](https://booking.superformosa.com/), a
