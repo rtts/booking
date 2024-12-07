@@ -23,5 +23,5 @@ Usage
 -----
 
 - Visit http://localhost:8000/admin/booking/photoshoot/add/ to add a photoshoot.
-- Visit http://localhost:8000/&lt;slug&gt;>/add/ to generate timeslots.
-- Visit http://localhost:8000/&lt;slug&gt;/ to reserve a timeslot.
+- Visit http://localhost:8000/slug/add/ to generate timeslots.
+- Visit http://localhost:8000/slug/ to reserve a timeslot.
